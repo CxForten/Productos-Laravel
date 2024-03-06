@@ -153,31 +153,15 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <div class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-6">
+
 
             <!-- /.card -->
             @yield('content')
 
             <!-- /.card -->
-          </div>
+
           <!-- /.col-md-6 -->
-          <div class="col-lg-6">
-
-            <!-- /.card -->
-
-
-          </div>
-          <!-- /.col-md-6 -->
-        </div>
-        <!-- /.row -->
-      </div>
-      <!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-  </div>
+         
   <!-- /.content-wrapper -->
 
   <!-- Control Sidebar -->

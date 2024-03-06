@@ -20,3 +20,6 @@ Route::get('/', function () {
 
 Route::get('/productos', [ProductoController::class, 'index'])-> name('productos.index');
 Route::post('/agregarProductos', [ProductoController::class, 'store'])-> name('productos.store');
+Route::get('/modificarProducto/{id}/editar', [ProductoController::class, 'edit'])-> name('productos.edit');
+Route::put('/modificarProducto/{id}', [ProductoController::class, 'update'])-> name('productos.update');
+Route::delete('/eliminarProducto/{producto}', [ProductoController::class, 'destroy'])-> name('productos.destroy');

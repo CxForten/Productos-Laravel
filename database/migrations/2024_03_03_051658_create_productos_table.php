@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('productos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre_producto');
-            $table->dateTime('fecha_de_vencimiento');
+            $table->date('fecha_de_vencimiento');
             $table->double('precio');
             $table->integer('cantidad');
+            $table->boolean('estado')->default(true);
             $table->foreignId('categoria_id')->constrained('categorias');
             $table->timestamps();
         });
