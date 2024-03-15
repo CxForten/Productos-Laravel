@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categoria;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoriaController extends Controller
 {
@@ -12,7 +13,11 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        //
+        $categorias = DB::table("categorias")
+        ->where('categorias.estado', 1)
+        ->select('categorias.*')
+        ->get();
+        return view("categoria.categoria", compact("categorias"));
     }
 
     /**
@@ -20,7 +25,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -28,7 +33,8 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Categoria::create($request->all());
+        return back();
     }
 
     /**
@@ -60,6 +66,8 @@ class CategoriaController extends Controller
      */
     public function destroy(Categoria $categoria)
     {
-        //
+        $categoria->estado = false;
+        $categoria->save();
+        return back();
     }
 }

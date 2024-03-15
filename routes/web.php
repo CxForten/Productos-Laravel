@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ProductoController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('./layouts/layout');
 });
+
+Route::get('/categorias', [CategoriaController::class, 'index'])->name('categorias.index'); 
+Route::post('/agregarCategoria', [CategoriaController::class,'store'])->name('categorias.store');
+Route::delete('/eliminarCategoria/{categoria}', [CategoriaController::class,'destroy'])->name('categorias.destroy');
 
 Route::get('/productos', [ProductoController::class, 'index'])-> name('productos.index');
 Route::post('/agregarProductos', [ProductoController::class, 'store'])-> name('productos.store');

@@ -105,15 +105,15 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('productos.index') }}" class="nav-link">
+                <a href="{{route('categorias.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Registrar Producto</p>
+                  <p>Categorias</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/tables/data.html" class="nav-link">
+                <a href="{{ route('productos.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>DataTables</p>
+                  <p>Productos</p>
                 </a>
               </li>
               <li class="nav-item">
