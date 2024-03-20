@@ -39,21 +39,25 @@
                                     <td>{{ $producto->precio }}</td>
                                     <td>{{ $producto->cantidad }}</td>
                                     <td>{{ $producto->categoria }}</td>
-                                    <td class="project-actions">
-                                        <a class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal{{ $producto->id }}">
-                                            <i class="fas fa-pencil-alt"></i>
-                                        </a>
-                                        <div style="display: inline-block">
+                                        <td class="project-actions">
+                                            <a class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal{{ $producto->id }}">
+                                                <i class="fas fa-pencil-alt"></i>
+                                            </a>
+                                            <div style="display: inline-block">
 
-                                            <form action="{{ route('productos.destroy', $producto->id) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </td>
+                                                <form action="{{ route('productos.destroy', $producto->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-sm">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </form>
+
+                                            </div>
+                                            <a href="{{route('producto.vender', $producto->id)}}">
+                                                <i class="fas fa-shopping-cart"></i>
+                                            </a>
+                                        </td>
                                     <!-- Button trigger modal -->
 
 
@@ -187,6 +191,8 @@
     </div>
 </section>
 
-
+<div>
+    
+</div>
 
 @endsection

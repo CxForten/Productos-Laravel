@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categoria;
 use App\Models\Producto;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -27,9 +28,31 @@ class ProductoController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function venta(Producto $producto)
     {
-        //
+        return view('venta.venta', compact('producto'));
+    }
+
+    public function vendido(Request $request, Producto $producto){
+        if($producto->cantidad >= $request->vendido && $producto->cantidad !== 0) {
+            $producto->cantidad -= $request->vendido; // Resta la cantidad vendida de la cantidad actual
+            $producto->total = $producto->precio * $request->vendido;
+            $producto->fechaCompra = Carbon::now(); // Usa Carbon::now() para obtener la fecha actual
+            $producto->save();
+
+        return redirect()->route('productos.index')->with('success','Venta realizada con éxito');
+        }
+        return redirect()->route('productos.index')->with('error','No hay suficiente '.$producto->nombre_producto.' en existencia');
+    }
+
+    public function ventaFecha(){
+        $ventas = Producto::all()->groupBy('fechaCompra');
+
+        foreach($ventas as $key => $ventasPorFecha){
+        $total = $ventasPorFecha->sum('total');
+        $ventas[ $key ] = $total;
+        }
+        return view('venta.totalporFecha', compact('ventas'));
     }
 
     /**
@@ -49,7 +72,7 @@ class ProductoController extends Controller
         //
     }
 
-    /**
+    /** 
      * Show the form for editing the specified resource.
      */
     public function edit($id)

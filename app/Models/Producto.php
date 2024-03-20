@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Producto extends Model
 {
-    use HasFactory;
-    protected $fillable = ['nombre_producto', 'fecha_de_vencimiento', 'precio','cantidad', 'categoria_id'];
+    public $timestamps=false;
+    protected $guarded=[];
 }

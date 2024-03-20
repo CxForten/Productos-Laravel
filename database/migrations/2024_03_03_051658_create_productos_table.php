@@ -17,6 +17,8 @@ return new class extends Migration
             $table->date('fecha_de_vencimiento');
             $table->double('precio');
             $table->integer('cantidad');
+            $table->double('total')->nullable();
+            $table->date('fechaCompra')->nullable();
             $table->boolean('estado')->default(true);
             $table->foreignId('categoria_id')->constrained('categorias');
             $table->timestamps();

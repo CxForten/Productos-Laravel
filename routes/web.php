@@ -25,6 +25,10 @@ Route::delete('/eliminarCategoria/{categoria}', [CategoriaController::class,'des
 
 Route::get('/productos', [ProductoController::class, 'index'])-> name('productos.index');
 Route::post('/agregarProductos', [ProductoController::class, 'store'])-> name('productos.store');
-Route::get('/modificarProducto/{id}/editar', [ProductoController::class, 'edit'])-> name('productos.edit');
-Route::put('/modificarProducto/{id}', [ProductoController::class, 'update'])-> name('productos.update');
+Route::get('/modificarProducto/{productos}/editar', [ProductoController::class, 'edit'])-> name('productos.edit');
+Route::put('/modificarProducto/{productos}', [ProductoController::class, 'update'])-> name('productos.update');
 Route::delete('/eliminarProducto/{producto}', [ProductoController::class, 'destroy'])-> name('productos.destroy');
+
+Route::get('/venta/{producto}', [ProductoController::class, 'venta'])->name('producto.vender');
+Route::put('/ventaRealizada/{producto}',[ProductoController::class, 'vendido'])->name('vendido');
+Route::get('/ventaFecha', [ProductoController::class,'ventaFecha'])->name('venta');
